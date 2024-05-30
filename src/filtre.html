@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Liste des Cargaisons</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+  <div class="min-h-screen max-w-7xl mx-auto bg-gray-100 py-6">
+    <div class="max-w-full mx-auto bg-white shadow rounded-lg p-6">
+      <span class="flex justify-between items-center">
+        <h2 class="text-2xl font-bold bg-b text-gray-900 mb-4">Liste des Cargaisons</h2>
+        <span>
+          <button class="bg-blue-800 text-xl text-white font-bold px-4 py-2 rounded-lg" id="addCargoBtn">Add</button>
+          <button class="bg-blue-800 text-xl text-white font-bold px-4 py-2 rounded-lg mb-2" id="viewCargoBtn">View</button>
+        </span>
+      </span>
+      <div class="mb-4">
+        <span class="flex gap-2">
+          <input class="border border-gray-300 p-3 rounded-lg w-full" type="text" placeholder="Rechercher..." id="searchInput">
+          <button class="bg-blue-800 text-white px-9 py-2 rounded-lg" onclick="filterCargos()">Rechercher</button>
+        </span>
+      </div>
+      <table class="min-w-full bg-white">
+        <thead>
+          <tr>
+            <th class="py-2 px-4 bg-gray-200 text-left">ID</th>
+            <th class="py-2 px-4 bg-gray-200 text-left">Type</th>
+            <th class="py-2 px-4 bg-gray-200 text-left">Date départ</th>
+            <th class="py-2 px-4 bg-gray-200 text-left">Date d'arrivée</th>
+            <th class="py-2 px-4 bg-gray-200 text-left">Distance(Km)</th>
+            <th class="py-2 px-4 bg-gray-200 text-left">État</th>
+            <th class="py-2 px-4 bg-gray-200 text-left">Status</th>
+            <th class="py-2 px-4 bg-gray-200 text-left">Détails</th>
+          </tr>
+        </thead>
+        <tbody id="cargo-list"></tbody>
+      </table>
+      <div id="pagination" class="flex justify-center mt-4"></div>
+    </div>
+  </div>
+
+  <!-- Ajoutez cette partie dans votre code HTML -->
+<div class="fixed z-10 inset-0 overflow-y-auto hidden" id="addCargoModal">
+    <div class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+      <div class="fixed inset-0 transition-opacity">
+        <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+      </div>
+      <span class="hidden sm:inline-block sm:align-middle sm:h-screen"></span>
+      <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
+        <form id="addCargoForm">
+          <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+            <div class="mb-4">
+              <label for="type" class="block text-gray-700 font-bold mb-2">Type</label>
+              <select id="type" name="type" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                <option value="maritime">Maritime</option>
+                <option value="aerien">Aérien</option>
+                <!-- Ajoutez d'autres options si nécessaire -->
+              </select>
+            </div>
+            <div class="mb-4">
+              <label for="dateDepart" class="block text-gray-700 font-bold mb-2">Date de départ</label>
+              <input type="date" id="dateDepart" name="dateDepart" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            </div>
+            <div class="mb-4">
+              <label for="dateArrivee" class="block text-gray-700 font-bold mb-2">Date d'arrivée</label>
+              <input type="date" id="dateArrivee" name="dateArrivee" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            </div>
+            <div class="mb-4">
+              <label for="stopCriteria" class="block text-gray-700 font-bold mb-2">Critère d'arrêt</label>
+              <select id="stopCriteria" name="stopCriteria" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                <option value="distance">Distance</option>
+                <option value="duree">Durée</option>
+                <!-- Ajoutez d'autres options si nécessaire -->
+              </select>
+            </div>
+            <div class="mb-4">
+              <label for="criteriaValue" class="block text-gray-700 font-bold mb-2">Valeur du critère</label>
+              <input type="text" id="criteriaValue" name="criteriaValue" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Entrez la valeur du critère">
+            </div>
+          </div>
+          <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+            <button type="submit" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm">
+              Ajouter
+            </button>
+            <button type="button" id="cancelBtn" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
+              Annuler
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const addCargoBtn = document.getElementById('addCargoBtn');
+      const addCargoModal = document.getElementById('addCargoModal');
+      const cancelBtn = document.getElementById('cancelBtn');
+      const addCargoForm = document.getElementById('addCargoForm');
+      const cargoList = document.getElementById('cargo-list');
+      const dateDepartInput = document.getElementById('dateDepart');
+      const dateArriveeInput = document.getElementById('dateArrivee');
+      const stopCriteriaSelect = document.getElementById('stopCriteria');
+      const criteriaValueInput = document.getElementById('criteriaValue');
+      let pointDepart = null;
+      let pointArrivee = null;
+      const cargoCounters = { maritime: 0, aerien: 0 };
+
+      const itemsPerPage = 10;
+      let currentPage = 1;
+      let cargoListFiltered = [];
+
+      addCargoBtn.addEventListener('click', () => {
+        addCargoModal.classList.remove('hidden');
+      });
+
+      cancelBtn.addEventListener('click', () => {
+        addCargoModal.classList.add('hidden');
+        resetForm();
+      });
+
+      addCargoForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        if (!validateForm()) {
+          return;
+        }
+        const type = addCargoForm.type.value;
+        const dateDepart = addCargoForm.dateDepart.value;
+        const dateArrivee = addCargoForm.dateArrivee.value;
+        const stopCriteria = addCargoForm.stopCriteria.value;
+        const criteriaValue = addCargoForm.criteriaValue.value;
+        const cargoId = generateCargoId(type);
+        const newRow = createNewCargoRow(cargoId, type, dateDepart, dateArrivee, distance.toFixed(2));
+        cargoList.appendChild(newRow);
+        addCargoModal.classList.add('hidden');
+        addCargoForm.reset();
+        resetForm();
+      });
+
+      function resetForm() {
+        dateDepartInput.value = '';
+        dateArriveeInput.value = '';
+        stopCriteriaSelect.value = '';
+        criteriaValueInput.value = '';
+        document.getElementById('depart').value = '';
+        document.getElementById('arrivee').value = '';
+        departMarker = null;
+        arriveeMarker = null;
+        map.eachLayer(function (layer) {
+          if (layer instanceof L.Marker) {
+            map.removeLayer(layer);
+          }
+        });
+      }
+
+      function generateCargoId(type) {
+        if (!cargoCounters[type]) {
+          cargoCounters[type] = 0;
+        }
+        cargoCounters[type]++;
+        return `${type.charAt(0).toUpperCase()}${cargoCounters[type].toString().padStart(3, '0')}`;
+      }
+
+      function createNewCargoRow(id, type, dateDepart, dateArrivee, distance) {
+        const newRow = document.createElement('tr');
+        newRow.classList.add('border-b');
+        newRow.innerHTML = `
+          <td class="py-2 px-4">${id}</td>
+          <td class="py-2 px-4">${type}</td>
+          <td class="py-2 px-4">${dateDepart}</td>
+          <td class="py-2 px-4">${dateArrivee}</td>
+          <td class="py-2 px-4">${distance}</td>
+          <td class="py-2 px-4"><button>Ouvert</button></td>
+          <td class="py-2 px-4"><button>En attente</button></td>
+          <td class="py-2 px-4">
+            <button class="bg-blue-700 text-white px-4 py-2 rounded-lg">Voir</button>
+          </td>
+        `;
+
+        cargoListFiltered.push(newRow);
+        displayCargos();
+        return newRow;
+      }
+
+      function displayCargos() {
+        const startIndex = (currentPage - 1) * itemsPerPage;
+        const endIndex = startIndex + itemsPerPage;
+        const displayedCargos = cargoListFiltered.slice(startIndex, endIndex);
+
+        cargoList.innerHTML = '';
+        displayedCargos.forEach(row => cargoList.appendChild(row));
+
+        const pagination = document.getElementById('pagination');
+        pagination.innerHTML = '';
+
+        const totalPages = Math.ceil(cargoListFiltered.length / itemsPerPage);
+
+        if (totalPages > 1) {
+          const prevButton = document.createElement('button');
+          prevButton.innerText = 'Précédent';
+          prevButton.disabled = currentPage === 1;
+          prevButton.addEventListener('click', () => {
+            currentPage--;
+            displayCargos();
+          });
+          pagination.appendChild(prevButton);
+
+          for (let i = 1; i <= totalPages; i++) {
+            const pageButton = document.createElement('button');
+            pageButton.innerText =i;
+            pageButton.classList.add('mx-1', 'py-1', 'px-2', 'rounded');
+            pageButton.classList.toggle('bg-blue-500', i === currentPage);
+            pageButton.classList.toggle('text-white', i === currentPage);
+            pageButton.addEventListener('click', () => {
+              currentPage = i;
+              displayCargos();
+            });
+            pagination.appendChild(pageButton);
+          }
+
+          const nextButton = document.createElement('button');
+          nextButton.innerText = 'Suivant';
+          nextButton.disabled = currentPage === totalPages;
+          nextButton.addEventListener('click', () => {
+            currentPage++;
+            displayCargos();
+          });
+          pagination.appendChild(nextButton);
+        }
+      }
+
+      const searchInput = document.getElementById('searchInput');
+      searchInput.addEventListener('input', filterCargos);
+
+      function filterCargos() {
+        const searchValue = searchInput.value.toLowerCase();
+        cargoListFiltered = cargoList.children.filter(row => {
+          const id = row.children[0].textContent.toLowerCase();
+          const type = row.children[1].textContent.toLowerCase();
+          const dateDepart = row.children[2].textContent.toLowerCase();
+          const dateArrivee = row.children[3].textContent.toLowerCase();
+          const etat = row.children[5].textContent.toLowerCase();
+          const status = row.children[6].textContent.toLowerCase();
+
+          return (
+            id.includes(searchValue) ||
+            type.includes(searchValue) ||
+            dateDepart.includes(searchValue) ||
+            dateArrivee.includes(searchValue) ||
+            etat.includes(searchValue) ||
+            status.includes(searchValue)
+          );
+        });
+
+        currentPage = 1;
+        displayCargos();
+      }
+
+      displayCargos();
+    });
+    addCargoBtn.addEventListener('click', () => {
+  addCargoModal.classList.remove('hidden');
+});
+
+cancelBtn.addEventListener('click', () => {
+  addCargoModal.classList.add('hidden');
+  resetForm();
+});
+
+function createNewCargoRow(id, type, dateDepart, dateArrivee, distance) {
+  const newRow = document.createElement('tr');
+  newRow.classList.add('border-b');
+  newRow.innerHTML = `
+    <td class="py-2 px-4">${id}</td>
+    <td class="py-2 px-4">${type}</td>
+    <td class="py-2 px-4">${dateDepart}</td>
+    <td class="py-2 px-4">${dateArrivee}</td>
+    <td class="py-2 px-4">${distance}</td>
+    <td class="py-2 px-4"><button>Ouvert</button></td>
+    <td class="py-2 px-4"><button>En attente</button></td>
+    <td class="py-2 px-4">
+      <button class="bg-blue-700 text-white px-4 py-2 rounded-lg">Voir</button>
+    </td>
+  `;
+
+  cargoListFiltered.push(newRow);
+  displayCargos();
+  return newRow;
+}
+
+addCargoForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  if (!validateForm()) {
+    return;
+  }
+  const type = addCargoForm.type.value;
+  const dateDepart = addCargoForm.dateDepart.value;
+  const dateArrivee = addCargoForm.dateArrivee.value;
+  const stopCriteria = addCargoForm.stopCriteria.value;
+  const criteriaValue = addCargoForm.criteriaValue.value;
+  const cargoId = generateCargoId(type);
+  const distance = calculateDistance(pointDepart, pointArrivee); // Fonction pour calculer la distance
+
+  const newRow = createNewCargoRow(cargoId, type, dateDepart, dateArrivee, distance.toFixed(2));
+  cargoList.appendChild(newRow);
+  addCargoModal.classList.add('hidden');
+  addCargoForm.reset();
+  resetForm();
+});
+  </script>
+</body>
+</html>

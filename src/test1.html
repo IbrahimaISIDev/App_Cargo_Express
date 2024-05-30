@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="../dist/style.css" rel="stylesheet">
+    <title>Tailwind_CSS_Learning</title>
+</head>
+<body>
+  
+    <!-- Dashboard -->
+<div class="min-h-screen bg-gray-100 flex flex-col">
+  <header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+      <h1 class="text-3xl font-bold text-gray-900">
+        Tableau de Bord
+      </h1>
+    </div>
+  </header>
+  <main class="flex-1 p-6">
+    <div class="grid grid-cols-1 gap-6 lg:grid-cols-3">
+      <!-- Statistiques Clés -->
+      <div class="bg-white shadow rounded-lg p-6">
+        <div class="flex items-center">
+          <div class="flex-shrink-0 bg-indigo-500 rounded-full p-3">
+            <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6" />
+            </svg>
+          </div>
+          <div class="ml-4">
+            <h3 class="text-lg font-medium text-gray-900">Livraisons en cours</h3>
+            <p class="text-3xl font-bold text-gray-900">24</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white shadow rounded-lg p-6">
+        <div class="flex items-center">
+          <div class="flex-shrink-0 bg-green-500 rounded-full p-3">
+            <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6" />
+            </svg>
+          </div>
+          <div class="ml-4">
+            <h3 class="text-lg font-medium text-gray-900">Livraisons complétées</h3>
+            <p class="text-3xl font-bold text-gray-900">120</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white shadow rounded-lg p-6">
+        <div class="flex items-center">
+          <div class="flex-shrink-0 bg-red-500 rounded-full p-3">
+            <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6" />
+            </svg>
+          </div>
+          <div class="ml-4">
+            <h3 class="text-lg font-medium text-gray-900">Retards</h3>
+            <p class="text-3xl font-bold text-gray-900">5</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Carte en Temps Réel -->
+    <div class="mt-8 bg-white shadow rounded-lg p-6">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Carte en Temps Réel</h2>
+      <div class="h-64 bg-gray-200 rounded-lg">
+        <!-- Ici, intégrer une carte interactive telle que Google Maps -->
+      </div>
+    </div>
+  </main>
+</div>
+
+
+<!-- Liste des Cargaisons -->
+<div class="min-h-screen bg-gray-100 p-6">
+  <div class="max-w-7xl mx-auto bg-white shadow rounded-lg p-6">
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">Liste des Cargaisons</h2>
+    <div class="mb-4">
+      <input class="border border-gray-300 p-2 rounded-lg w-full" type="text" placeholder="Rechercher...">
+    </div>
+    <table class="min-w-full bg-white">
+      <thead>
+        <tr>
+          <th class="py-2 px-4 bg-gray-200 text-left">ID</th>
+          <th class="py-2 px-4 bg-gray-200 text-left">Type</th>
+          <th class="py-2 px-4 bg-gray-200 text-left">Distance (km)</th>
+          <th class="py-2 px-4 bg-gray-200 text-left">Frais de Transport</th>
+          <th class="py-2 px-4 bg-gray-200 text-left">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="border-b">
+          <td class="py-2 px-4">C001</td>
+          <td class="py-2 px-4">Maritime</td>
+          <td class="py-2 px-4">1500</td>
+          <td class="py-2 px-4">45000 F</td>
+          <td class="py-2 px-4">
+            <button class="bg-blue-500 text-white px-4 py-2 rounded-lg">Voir</button>
+          </td>
+        </tr>
+        <tr class="border-b">
+          <td class="py-2 px-4">C002</td>
+          <td class="py-2 px-4">Aérienne</td>
+          <td class="py-2 px-4">800</td>
+          <td class="py-2 px-4">72000 F</td>
+          <td class="py-2 px-4">
+            <button class="bg-blue-500 text-white px-4 py-2 rounded-lg">Voir</button>
+          </td>
+        </tr>
+        <!-- Plus de lignes -->
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Détails de la Cargaison -->
+<div class="min-h-screen bg-gray-100 p-6">
+  <div class="max-w-7xl mx-auto bg-white shadow rounded-lg p-6">
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">Détails de la Cargaison ID: C001</h2>
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+      <div>
+        <h3 class="text-lg font-medium text-gray-900">Informations Générales</h3>
+        <p><strong>Type:</strong> Maritime</p>
+        <p><strong>Distance:</strong> 1500 km</p>
+        <p><strong>Frais de Transport:</strong> 45000 F</p>
+      </div>
+      <div>
+        <h3 class="text-lg font-medium text-gray-900">Produits</h3>
+        <ul>
+          <li>Produit 1: Alimentaire, Poids: 100 kg</li>
+          <li>Produit 2: Matériel, Poids: 200 kg, Type: Fragile</li>
+          <!-- Plus de produits -->
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Ajout de Produit -->
+<div class="min-h-screen bg-gray-100 p-6">
+  <div class="max-w-7xl mx-auto bg-white shadow rounded-lg p-6">
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">Ajouter un Produit</h2>
+    <form>
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+        <div>
+          <label class="block text-gray-700">Libellé du Produit</label>
+          <input type="text" class="mt-1 block w-full border-gray-300 rounded-lg shadow-sm">
+        </div>
+        <div>
+          <label class="block text-gray-700">Poids (kg)</label>
+          <input type="number" class="mt-1 block w-full border-gray-300 rounded-lg shadow-sm">
+        </div>
+        <div>
+          <label class="block text-gray-700">Type de Produit</label>
+          <select class="mt-1 block w-full border-gray-300 rounded-lg shadow-sm">
+            <option>Alimentaire</option>
+            <option>Chimique</option>
+            <option>Matériel (Fragile)</option>
+            <option>Matériel (Incassable)</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-gray-700">Degré de Toxicité (si chimique)</label>
+          <input type="number" class="mt-1 block w-full border-gray-300 rounded-lg shadow-sm">
+        </div>
+      </div>
+      <div class="mt-6">
+        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg">Ajouter Produit</button>
+      </div>
+    </form>
+  </div>
+</div>
+<!-- Gestion des Chauffeurs -->
+<div class="min-h-screen bg-gray-100 p-6">
+  <div class="max-w-7xl mx-auto bg-white shadow rounded-lg p-6">
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">Liste des Chauffeurs</h2>
+    <table class="min-w-full bg-white">
+      <thead>
+        <tr>
+          <th class="py-2 px-4 bg-gray-200 text-left">Nom</th>
+          <th class="py-2 px-4 bg-gray-200 text-left">Disponibilité</th>
+          <th class="py-2 px-4 bg-gray-200 text-left">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="border-b">
+          <td class="py-2 px-4">Jean Dupont</td>
+          <td class="py-2 px-4">Disponible</td>
+          <td class="py-2 px-4">
+            <button class="bg-blue-500 text-white px-4 py-2 rounded-lg">Voir</button>
+            <button class="bg-red-500 text-white px-4 py-2 rounded-lg">Supprimer</button>
+          </td>
+        </tr>
+        <!-- Plus de lignes -->
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Gestion des Véhicules -->
+<div class="min-h-screen bg-gray-100 p-6">
+  <div class="max-w-7xl mx-auto bg-white shadow rounded-lg p-6">
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">Liste des Véhicules</h2>
+    <table class="min-w-full bg-white">
+      <thead>
+        <tr>
+          <th class="py-2 px-4 bg-gray-200 text-left">ID Véhicule</th>
+          <th class="py-2 px-4 bg-gray-200 text-left">Type</th>
+          <th class="py-2 px-4 bg-gray-200 text-left">Statut</th>
+          <th class="py-2 px-4 bg-gray-200 text-left">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="border-b">
+          <td class="py-2 px-4">V001</td>
+          <td class="py-2 px-4">Camion</td>
+          <td class="py-2 px-4">En service</td>
+          <td class="py-2 px-4">
+            <button class="bg-blue-500 text-white px-4 py-2 rounded-lg">Voir</button>
+            <button class="bg-red-500 text-white px-4 py-2 rounded-lg">Supprimer</button>
+          </td>
+        </tr>
+        <!-- Plus de lignes -->
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Rapports et Analyses -->
+<div class="min-h-screen bg-gray-100 p-6">
+  <div class="max-w-7xl mx-auto bg-white shadow rounded-lg p-6">
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">Rapports et Analyses</h2>
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+      <div class="bg-white shadow rounded-lg p-6">
+        <h3 class="text-lg font-medium text-gray-900">Performances des Livraisons</h3>
+        <canvas id="deliveryPerformanceChart"></canvas>
+        <!-- Utilisez Chart.js pour des graphiques interactifs -->
+      </div>
+      <div class="bg-white shadow rounded-lg p-6">
+        <h3 class="text-lg font-medium text-gray-900">Frais de Transport par Type</h3>
+        <canvas id="transportCostChart"></canvas>
+        <!-- Utilisez Chart.js pour des graphiques interactifs -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Tableau de Bord Amélioré -->
+<div class="min-h-screen bg-gray-100 p-6">
+  <header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+      <h1 class="text-3xl font-bold text-gray-900">
+        Tableau de Bord
+      </h1>
+    </div>
+  </header>
+  <main class="mt-8">
+    <div class="max-w-7xl mx-auto">
+      <!-- Statistiques Clés -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+        <!-- Carte Statistique -->
+        <div class="bg-white shadow rounded-lg p-6">
+          <div class="flex items-center">
+            <div class="flex-shrink-0 bg-indigo-500 rounded-full p-4">
+              <svg class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M3 14h18m-9-8h.01M12 16h.01M12 20h.01" />
+              </svg>
+            </div>
+            <div class="ml-4">
+              <h3 class="text-lg font-medium text-gray-900">Livraisons en cours</h3>
+              <p class="text-3xl font-bold text-gray-900">24</p>
+            </div>
+          </div>
+        </div>
+        <!-- Autres Cartes Statistiques -->
+        <div class="bg-white shadow rounded-lg p-6">
+          <div class="flex items-center">
+            <div class="flex-shrink-0 bg-green-500 rounded-full p-4">
+              <svg class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M3 14h18m-9-8h.01M12 16h.01M12 20h.01" />
+              </svg>
+            </div>
+            <div class="ml-4">
+              <h3 class="text-lg font-medium text-gray-900">Livraisons complétées</h3>
+              <p class="text-3xl font-bold text-gray-900">120</p>
+            </div>
+          </div>
+        </div>
+        <div class="bg-white shadow rounded-lg p-6">
+          <div class="flex items-center">
+            <div class="flex-shrink-0 bg-red-500 rounded-full p-4">
+              <svg class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M3 14h18m-9-8h.01M12 16h.01M12 20h.01" />
+              </svg>
+            </div>
+            <div class="ml-4">
+              <h3 class="text-lg font-medium text-gray-900">Retards</h3>
+              <p class="text-3xl font-bold text-gray-900">5</p>
+            </div>
+          </div>
+        </div>
+        <div class="bg-white shadow rounded-lg p-6">
+          <div class="flex items-center">
+            <div class="flex-shrink-0 bg-yellow-500 rounded-full p-4">
+              <svg class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M3 14h18m-9-8h.01M12 16h.01M12 20h.01" />
+              </svg>
+            </div>
+            <div class="ml-4">
+              <h3 class="text-lg font-medium text-gray-900">Notifications</h3>
+              <p class="text-3xl font-bold text-gray-900">12</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Carte en Temps Réel et Activités Récentes -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div class="lg:col-span-2">
+          <div class="bg-white shadow rounded-lg p-6">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">Carte en Temps Réel</h2>
+            <div class="h-64 bg-gray-200 rounded-lg">
+              <!-- Intégrer une carte interactive telle que Google Maps -->
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="bg-white shadow rounded-lg p-6">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">Activités Récentes</h2>
+            <ul class="divide-y divide-gray-200">
+              <li class="py-2 flex items-center">
+                <div class="flex-shrink-0 bg-blue-500 rounded-full p-2">
+                  <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c0-1.1-.9-2-2-2H7c-1.1 0-2 .9-2 2v6c0 1.1.9 2 2 2h3c1.1 0 2-.9 2-2v-6zM20 11c0-1.1-.9-2-2-2h-3c-1.1 0-2 .9-2 2v6c0 1.1.9 2 2 2h3c1.1 0 2-.9 2-2v-6z" />
+                  </svg>
+                </div>
+                <div class="ml-4">
+                  <p class="text-sm font-medium text-gray-900">Nouvelle cargaison ajoutée</p>
+                  <p class="text-sm text-gray-500">Il y a 5 minutes</p>
+                </div>
+              </li>
+              <li class="py-2 flex items-center">
+                <div class="flex-shrink-0 bg-green-500 rounded-full p-2">
+                  <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c0-1.1-.9-2-2-2H7c-1.1 0-2 .9-2 2v6c0 1.1.9 2 2 2h3c1.1 0 2-.9 2-2v-6zM20 11c0-1.1-.9-2-2-2h-3c-1.1 0-2 .9-2 2v6c0 1.1.9 2 2 2h3c1.1 0 2-.9 2-2v-6z" />
+                  </svg>
+                </div>
+                <div class="ml-4">
+                  <p class="text-sm font-medium text-gray-900">Livraison complétée</p>
+                  <p class="text-sm text-gray-500">Il y a 10 minutes</p>
+                </div>
+              </li>
+              <!-- Plus d'activités -->
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+
+<!-- Tableau de Bord Amélioré -->
+<div class="min-h-screen bg-gray-100 p-6">
+  <header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+      <h1 class="text-3xl font-bold text-gray-900">
+        Tableau de Bord
+      </h1>
+    </div>
+  </header>
+  <main class="mt-8">
+    <div class="max-w-7xl mx-auto">
+      <!-- Statistiques Clés -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+        <!-- Carte Statistique -->
+        <div class="bg-white shadow rounded-lg p-6">
+          <div class="flex items-center">
+            <div class="flex-shrink-0 bg-indigo-500 rounded-full p-4">
+              <svg class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M3 14h18m-9-8h.01M12 16h.01M12 20h.01" />
+              </svg>
+            </div>
+            <div class="ml-4">
+              <h3 class="text-lg font-medium text-gray-900">Livraisons en cours</h3>
+              <p class="text-3xl font-bold text-gray-900">24</p>
+              <button class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg" onclick="openDeliveriesModal()">Voir les détails des livraisons</button>
+            </div>
+          </div>
+        </div>
+        <!-- Autres Cartes Statistiques -->
+        <!-- (similaire aux exemples précédents) -->
+      </div>
+      <!-- Carte en Temps Réel et Activités Récentes -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div class="lg:col-span-2">
+          <div class="bg-white shadow rounded-lg p-6">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">Carte en Temps Réel</h2>
+            <div class="h-64 bg-gray-200 rounded-lg">
+              <!-- Intégrer une carte interactive telle que Google Maps -->
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="bg-white shadow rounded-lg p-6">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">Activités Récentes</h2>
+            <ul class="divide-y divide-gray-200">
+              <li class="py-2 flex items-center">
+                <div class="flex-shrink-0 bg-blue-500 rounded-full p-2">
+                  <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c0-1.1-.9-2-2-2H7c-1.1 0-2 .9-2 2v6c0 1.1.9 2 2 2h3c1.1 0 2-.9 2-2v-6zM20 11c0-1.1-.9-2-2-2h-3c-1.1 0-2 .9-2 2v6c0 1.1.9 2 2 2h3c1.1 0 2-.9 2-2v-6z" />
+                  </svg>
+                </div>
+                <div class="ml-4">
+                  <p class="text-sm font-medium text-gray-900">Nouvelle cargaison ajoutée</p>
+                  <p class="text-sm text-gray-500">Il y a 5 minutes</p>
+                </div>
+              </li>
+              <!-- Plus d'activités -->
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Modale de Détails des Livraisons -->
+  <div id="deliveriesModal" class="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center z-50 hidden">
+    <div class="bg-white shadow-lg rounded-lg p-6 w-full max-w-4xl">
+      <div class="flex justify-between items-center mb-4">
+        <h2 class="text-2xl font-bold text-gray-900">Détails des Livraisons en Cours</h2>
+        <button class="text-gray-500" onclick="closeDeliveriesModal()">Fermer</button>
+      </div>
+      <table class="min-w-full bg-white">
+        <thead>
+          <tr>
+            <th class="py-2 px-4 bg-gray-200 text-left">ID Livraison</th>
+            <th class="py-2 px-4 bg-gray-200 text-left">Produit</th>
+            <th class="py-2 px-4 bg-gray-200 text-left">Chauffeur</th>
+            <th class="py-2 px-4 bg-gray-200 text-left">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="border-b">
+            <td class="py-2 px-4">LIV1234</td>
+            <td class="py-2 px-4">Alimentaire</td>
+            <td class="py-2 px-4">Jean Dupont</td>
+            <td class="py-2 px-4">
+              <button class="bg-blue-500 text-white px-4 py-2 rounded-lg" onclick="openDeliveryDetailModal('LIV1234')">Détails</button>
+            </td>
+          </tr>
+          <!-- Plus de lignes -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Modale de Détail d'une Livraison -->
+  <div id="deliveryDetailModal" class="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center z-50 hidden">
+    <div class="bg-white shadow-lg rounded-lg p-6 w-full max-w-4xl">
+      <div class="flex justify-between items-center mb-4">
+        <h2 class="text-2xl font-bold text-gray-900">Détails de la Livraison <span id="deliveryId"></span></h2>
+        <button class="text-gray-500" onclick="closeDeliveryDetailModal()">Fermer</button>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <p><strong>Heure de Départ :</strong> <span id="departureTime">08:00</span></p>
+          <p><strong>Distance Restante :</strong> <span id="remainingDistance">120 km</span></p>
+          <!-- Autres informations de la livraison -->
+        </div>
+        <div class="h-64 bg-gray-200 rounded-lg">
+          <!-- Intégrer une carte interactive telle que Google Maps -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Livraisons en Cours -->
+<div class="min-h-screen bg-gray-100 p-6">
+  <header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+      <h1 class="text-3xl font-bold text-gray-900">
+        Livraisons en Cours
+      </h1>
+    </div>
+  </header>
+  <main class="mt-8">
+    <div class="max-w-7xl mx-auto">
+      <div class="bg-white shadow rounded-lg p-6">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">Liste des Livraisons</h2>
+        <table class="min-w-full bg-white">
+          <thead>
+            <tr>
+              <th class="py-2 px-4 bg-gray-200 text-left">ID Cargaison</th>
+              <th class="py-2 px-4 bg-gray-200 text-left">Destination</th>
+              <th class="py-2 px-4 bg-gray-200 text-left">Statut</th>
+              <th class="py-2 px-4 bg-gray-200 text-left">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b">
+              <td class="py-2 px-4">C001</td>
+              <td class="py-2 px-4">Paris</td>
+              <td class="py-2 px-4">En Route</td>
+              <td class="py-2 px-4">
+                <a href="/livraison/C001" class="bg-blue-500 text-white px-4 py-2 rounded-lg">Voir les détails</a>
+              </td>
+            </tr>
+            <!-- Plus de lignes -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- Détails de la Livraison -->
+<div class="min-h-screen bg-gray-100 p-6">
+  <header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+      <h1 class="text-3xl font-bold text-gray-900">
+        Détails de la Livraison
+      </h1>
+    </div>
+  </header>
+  <main class="mt-8">
+    <div class="max-w-7xl mx-auto">
+      <div class="bg-white shadow rounded-lg p-6">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">Livraison ID: C001</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <h3 class="text-lg font-medium text-gray-900">Informations de la Livraison</h3>
+            <p><strong>Heure de Départ:</strong> 08:00</p>
+            <p><strong>Distance Restante:</strong> 150 km</p>
+            <p><strong>Destination Finale:</strong> Paris</p>
+          </div>
+          <div>
+            <h3 class="text-lg font-medium text-gray-900">Situation en Temps Réel</h3>
+            <div class="h-64 bg-gray-200 rounded-lg">
+              <!-- Intégrer une carte interactive telle que Google Maps -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+
+<!-- Interface d'Ajout de Produit -->
+<div class="min-h-screen bg-gray-100 p-6">
+  <header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+      <h1 class="text-3xl font-bold text-gray-900">
+        Ajouter un Produit
+      </h1>
+    </div>
+  </header>
+  <main class="mt-8">
+    <div class="max-w-4xl mx-auto bg-white shadow rounded-lg p-6">
+      <form action="/ajouter-produit" method="POST" id="formProduit">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label for="nomProduit" class="block text-sm font-medium text-gray-700">Nom du Produit</label>
+            <input type="text" name="nomProduit" id="nomProduit" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" required>
+          </div>
+          <div>
+            <label for="descriptionProduit" class="block text-sm font-medium text-gray-700">Description</label>
+            <textarea name="descriptionProduit" id="descriptionProduit" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" required></textarea>
+          </div>
+          <div>
+            <label for="poidsProduit" class="block text-sm font-medium text-gray-700">Poids (kg)</label>
+            <input type="number" name="poidsProduit" id="poidsProduit" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" required>
+          </div>
+          <div>
+            <label for="dimensionsProduit" class="block text-sm font-medium text-gray-700">Dimensions (L x l x H en cm)</label>
+            <input type="text" name="dimensionsProduit" id="dimensionsProduit" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" required>
+          </div>
+          <div>
+            <label for="categorieProduit" class="block text-sm font-medium text-gray-700">Catégorie</label>
+            <select name="categorieProduit" id="categorieProduit" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" required>
+              <option value="">Sélectionnez une catégorie</option>
+              <option value="Electronics">Électronique</option>
+              <option value="Furniture">Meubles</option>
+              <option value="Clothing">Vêtements</option>
+              <!-- Ajouter plus d'options selon les besoins -->
+            </select>
+          </div>
+          <div>
+            <label for="valeurProduit" class="block text-sm font-medium text-gray-700">Valeur (€)</label>
+            <input type="number" name="valeurProduit" id="valeurProduit" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" required>
+          </div>
+        </div>
+        <div class="mt-6 flex justify-end">
+          <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg">Suivant</button>
+        </div>
+      </form>
+    </div>
+  </main>
+</div>
+
+
+
+<!-- Interface de Vérification et Choix de Cargaison -->
+<div class="min-h-screen bg-gray-100 p-6">
+  <header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+      <h1 class="text-3xl font-bold text-gray-900">
+        Vérifier et Choisir le Type de Cargaison
+      </h1>
+    </div>
+  </header>
+  <main class="mt-8">
+    <div class="max-w-4xl mx-auto bg-white shadow rounded-lg p-6">
+      <form action="/confirmer-cargaison" method="POST" id="formCargaison">
+        <div>
+          <h2 class="text-2xl font-bold text-gray-900 mb-4">Détails du Produit</h2>
+          <div class="grid grid-cols-1 gap-6">
+            <div>
+              <p><strong>Nom du Produit:</strong> Téléviseur 55"</p>
+              <p><strong>Description:</strong> Téléviseur à écran plat avec résolution 4K</p>
+              <p><strong>Poids:</strong> 15 kg</p>
+              <p><strong>Dimensions:</strong> 123 x 10 x 74 cm</p>
+              <p><strong>Catégorie:</strong> Électronique</p>
+              <p><strong>Valeur:</strong> 500 €</p>
+            </div>
+          </div>
+        </div>
+        <div class="mt-6">
+          <h2 class="text-2xl font-bold text-gray-900 mb-4">Choisir le Type de Cargaison</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <input type="radio" name="typeCargaison" id="cargaisonStandard" value="Standard" class="mr-2" required>
+              <label for="cargaisonStandard" class="text-sm font-medium text-gray-700">Cargaison Standard</label>
+              <p class="text-gray-500 text-sm">Livraison sous 3-5 jours ouvrés, conditions normales</p>
+            </div>
+            <div>
+              <input type="radio" name="typeCargaison" id="cargaisonExpress" value="Express" class="mr-2" required>
+              <label for="cargaisonExpress" class="text-sm font-medium text-gray-700">Cargaison Express</label>
+              <p class="text-gray-500 text-sm">Livraison sous 1-2 jours ouvrés, traitement prioritaire</p>
+            </div>
+            <div>
+              <input type="radio" name="typeCargaison" id="cargaisonRefrigeree" value="Refrigeree" class="mr-2" required>
+              <label for="cargaisonRefrigeree" class="text-sm font-medium text-gray-700">Cargaison Réfrigérée</label>
+              <p class="text-gray-500 text-sm">Pour produits périssables nécessitant une température contrôlée</p>
+            </div>
+            <!-- Ajouter plus d'options selon les besoins -->
+          </div>
+        </div>
+        <div class="mt-6 flex justify-end">
+          <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded-lg">Confirmer</button>
+        </div>
+      </form>
+    </div>
+  </main>
+</div>
+
+
+<script>
+  function openDeliveriesModal() {
+    document.getElementById('deliveriesModal').classList.remove('hidden');
+  }
+
+  function closeDeliveriesModal() {
+    document.getElementById('deliveriesModal').classList.add('hidden');
+  }
+
+  function openDeliveryDetailModal(deliveryId) {
+    document.getElementById('deliveryId').textContent = deliveryId;
+    // Mettre à jour les autres détails de la livraison en fonction de l'ID
+    document.getElementById('deliveryDetailModal').classList.remove('hidden');
+  }
+
+  function closeDeliveryDetailModal() {
+    document.getElementById('deliveryDetailModal').classList.add('hidden');
+  }
+</script>
+
+</body>
+
+</html>

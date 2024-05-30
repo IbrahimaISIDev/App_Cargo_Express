@@ -1,0 +1,17 @@
+[
+    {
+      "id": "C001",
+      "type": "Maritime",
+      "dateDepart": "2023-05-24",
+      "dateArrivee": "2023-06-01",
+      "etat": "En cours"
+    },
+    {
+      "id": "C002",
+      "type": "Aérienne",
+      "dateDepart": "2023-05-20",
+      "dateArrivee": "2023-05-25",
+      "etat": "En attente"
+    }
+  ]
+  
